@@ -2,6 +2,10 @@
 
 Release notes of the `cademi` CLI. API release notes: https://cademi.dev/api/changelog
 
+## 0.1.10 - 2026-09-26
+
+- Internal improvements. No changes to commands, flags, exit codes, installation, or updates.
+
 ## 0.1.9 - 2026-09-26
 
 - Internal improvements. No changes to commands, flags, exit codes, installation, or updates.
