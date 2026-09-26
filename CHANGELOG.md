@@ -2,6 +2,10 @@
 
 Release notes of the `cademi` CLI. API release notes: https://cademi.dev/api/changelog
 
+## 0.1.9 - 2026-09-26
+
+- Internal improvements. No changes to commands, flags, exit codes, installation, or updates.
+
 ## 0.1.8 - 2026-09-26
 
 - `cademi env` shows `max_retries` and `max_retry_wait`, and `client_request_id` when `CADEMI_CLIENT_REQUEST_ID` is set, each with where its value comes from.
