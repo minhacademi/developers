@@ -2,6 +2,13 @@
 
 Release notes of the `cademi` CLI. API release notes: https://cademi.dev/api/changelog
 
+## 0.1.11 - 2026-09-27
+
+- Requests are validated against the API contract embedded in the CLI before they are sent. A query parameter or body field that the operation does not accept, including nested fields and fields passed with `--data`, exits with code `2` without calling the API. The message names the field or parameter, its JSON path, and what the operation accepts. This applies to `cademi api`, when the path matches a known operation, and to the resource commands.
+- `cademi api --skip-validation` sends the request as is, for endpoints newer than the embedded API release.
+- `cademi api -H 'Idempotency-Key: ...'` works like `--idempotency-key`. Operations that require an `Idempotency-Key` always get one.
+- A `503` from the API without a `Retry-After` header, such as `storage_unavailable`, is not retried: the command returns right away with exit code `8`. A `503` with `Retry-After`, and a `503` without an API error envelope, are retried.
+
 ## 0.1.10 - 2026-09-26
 
 - Internal improvements. No changes to commands, flags, exit codes, installation, or updates.
