@@ -5,7 +5,7 @@ body:
       value: |
         Please write in English, so everyone who integrates with Cademí can follow the conversation.
 
-        Share an idea for the CLI. Once it is concrete, it may become a feature request.
+        Share an idea for the API, webhooks, Cademí MCP, or the CLI. Once it is concrete, it may become a feature request.
 
         **Discussions are public.** Never paste an API key, an access token, or personal data.
   - type: textarea

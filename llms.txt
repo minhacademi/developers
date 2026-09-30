@@ -1,8 +1,8 @@
 # Cademí for developers
 
-> Public issue tracker for the Cademí API v3 and the cademi CLI. The cademi CLI is the command-line tool for the Cademí API v3 (an LMS): every API operation as a command, human or credential sign-in, event forwarding to localhost, declarative configuration, and file transfer. Install with `curl -fsSL https://cli.cademi.dev/install.sh | bash`; authenticate unattended with `CADEMI_API_KEY`; list every command with `cademi commands --brief --json`.
+> Public issue tracker for the Cademí API v3, webhooks, Cademí MCP, and the cademi CLI. The cademi CLI is the command-line tool for the Cademí API v3 (an LMS): every API operation as a command, human or credential sign-in, event forwarding to localhost, declarative configuration, and file transfer. Install with `curl -fsSL https://cli.cademi.dev/install.sh | bash`; authenticate unattended with `CADEMI_API_KEY`; list every command with `cademi commands --brief --json`.
 
-- [AGENTS.md](https://github.com/minhacademi/developers/blob/main/AGENTS.md): short guide for AI agents (install, auth without a browser, discovery, exit codes, reporting)
+- [AGENTS.md](https://github.com/minhacademi/developers/blob/main/AGENTS.md): how AI agents open issues and discussions here (which form, labels, prefilled links, what never to include)
 - [Overview](https://cademi.dev/cli.md)
 - [Installation](https://cademi.dev/cli/installation.md)
 - [Authentication](https://cademi.dev/cli/authentication.md)
@@ -14,8 +14,11 @@
 - [CI and automation](https://cademi.dev/cli/ci.md)
 - [Cademí developer docs index](https://cademi.dev/llms.txt): the full API v3 guides and reference
 - [API errors](https://cademi.dev/api/errors.md): error envelope, codes and request_id
+- [Webhooks](https://cademi.dev/webhooks.md): payload versions, deliveries, signatures, and the body of each event
+- [Cademí MCP](https://cademi.dev/mcp/overview.md): the MCP server for AI assistants, and its [errors](https://cademi.dev/mcp/errors-and-limits.md)
 
 ## Optional
 
-- [Changelog](https://github.com/minhacademi/developers/blob/main/CHANGELOG.md)
+- [CLI changelog](https://cademi.dev/cli/changelog.md)
+- [Changes to this repository](https://github.com/minhacademi/developers/blob/main/CHANGELOG.md): forms, field IDs, and labels
 - [Contributing](https://github.com/minhacademi/developers/blob/main/CONTRIBUTING.md)

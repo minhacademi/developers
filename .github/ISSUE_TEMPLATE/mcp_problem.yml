@@ -1,0 +1,70 @@
+name: MCP problem
+description: Cademí MCP (mcp.cademi.dev) fails, returns something unexpected, or does not connect.
+labels: ["mcp", "bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please write in English, so everyone who integrates with Cademí can follow the conversation.
+
+        Use this form for the Cademí MCP server at `https://mcp.cademi.dev/mcp`: connecting a client, signing in, or a tool call that fails or returns something unexpected. The guides are at [cademi.dev/mcp](https://cademi.dev/mcp/overview), and the error codes at [Errors and limits](https://cademi.dev/mcp/errors-and-limits).
+
+        If the tool returns an API error whose response contradicts the API documentation, the [API bug report](https://github.com/minhacademi/developers/issues/new?template=api_problem.yml) is the better place.
+
+        **This issue is public.** Never paste an access token, an API key, or personal data of your users (names, emails, documents) from a conversation or a tool result. Replace them with placeholders.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Connecting a client
+        - Signing in and authorization
+        - A tool call
+        - Something else
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: Client
+      options:
+        - Claude (claude.ai or the desktop app)
+        - Claude Code
+        - Other MCP client
+    validations:
+      required: true
+  - type: input
+    id: client-other
+    attributes:
+      label: Other client and version
+      description: Only when you chose "Other MCP client".
+      placeholder: My client 1.2.0
+  - type: input
+    id: tool
+    attributes:
+      label: Tool
+      description: The name of the tool that failed, as the client shows it.
+  - type: input
+    id: error-code
+    attributes:
+      label: Error code
+      description: The `code` of the error, such as `PERMISSION_DENIED`.
+  - type: input
+    id: request-id
+    attributes:
+      label: request_id
+      description: The `request_id` of the error, when there is one. It lets Cademí find the call without any other data.
+      placeholder: 01J8Z3ZQ4H8K2M0T1S9P7YQF5C
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you asked or which tool you called, what you expected, and what you got. Include the error without personal data.
+    validations:
+      required: true
+  - type: input
+    id: when
+    attributes:
+      label: When it happened
+      description: Date and time, with the time zone.
+      placeholder: 2026-09-30 14:05 UTC

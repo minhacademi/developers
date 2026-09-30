@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest something new for the Cademí API v3 or the cademi CLI.
+description: Suggest something new for the Cademí API v3, webhooks, Cademí MCP, or the cademi CLI.
 labels: ["enhancement", "needs-triage"]
 body:
   - type: markdown
@@ -12,8 +12,10 @@ body:
       label: For
       options:
         - API
+        - Webhooks
+        - MCP
         - CLI
-        - Both
+        - More than one
     validations:
       required: true
   - type: textarea
@@ -27,9 +29,9 @@ body:
     id: proposal
     attributes:
       label: What you would like
-      description: The endpoint, field, event, command, or flag you have in mind. An example helps.
+      description: The endpoint, field, event, tool, command, or flag you have in mind. An example helps.
   - type: input
     id: version
     attributes:
       label: CLI version or API release
-      placeholder: cademi 0.1.3 / API 3.4.4
+      placeholder: cademi 0.1.11 / API 3.8.0

@@ -1,65 +1,55 @@
-# Cademí API and CLI: guide for AI agents
+# Opening issues and discussions: guide for AI agents
 
-`cademi` is the command-line tool for the Cademí API v3 (an LMS). Every API operation is a command. This file is the short version; the full guides are at https://cademi.dev/cli, and every page is also available as Markdown (append `.md`, for example https://cademi.dev/cli/commands.md). Index for LLMs: https://cademi.dev/llms.txt.
+This repository is the public channel for reports, requests, and questions about Cademí MCP, the `cademi` CLI, the API v3, and webhooks. This file tells an AI agent how to open an issue or a discussion here that Cademí can act on. To learn how to use the products, read the docs at https://cademi.dev (index for LLMs: https://cademi.dev/llms.txt).
 
-## Quick facts
+## Before you open anything
 
-- Install without prompts: `curl -fsSL https://cli.cademi.dev/install.sh | bash` (macOS, Linux; installs to `~/.cademi/bin`, no sudo). Windows: `irm https://cli.cademi.dev/install.ps1 | iex`.
-- Authenticate without a browser: `export CADEMI_API_KEY=ck_test_...` (a sandbox credential; `ck_live_...` is production). No profile or keychain is needed. Optional: `CADEMI_BASE_URL` (default `https://api.cademi.com.br`).
-- Every API operation is a command: operationId `products.modules.list` → `cademi products modules list`. Path parameters are positional arguments; query parameters are flags.
-- Anything not covered by a command: `cademi api <METHOD> /<path>` (path relative to `/api/v3`).
-- Disable automatic updates in unattended runs: `CADEMI_DISABLE_AUTOUPDATE=1` (already off when `CI` is set).
+- **Is it for this repository?** Security vulnerabilities go to the [private report](https://github.com/minhacademi/developers/security/advisories/new), never to an issue or a discussion. Questions about a Cademí account, its plan, or its data go to Cademí support. Pull requests are not accepted (see [CONTRIBUTING.md](CONTRIBUTING.md)).
+- **Does it already exist?** Search open and closed issues first, for example `gh issue list -R minhacademi/developers --state all --search "<error code or endpoint>"`. If you find it, add what is new as a comment instead of opening a duplicate.
+- **Is it a bug or a question?** A behavior that contradicts the documentation is an issue. How to do something is a discussion.
+- **Ask the person first.** Issues and discussions are public and posted under their GitHub account. Show them the title and body, and open it only after they agree.
 
-## Discover commands cheaply
+## Pick the form
 
-```sh
-cademi commands --brief --json          # index: command, method, route, summary, args (~90 KB)
-cademi commands products --json         # full detail for one group: flags, permissions, operationId
-cademi products update --help           # one command: route, permission, body fields
-```
+| Situation | Form (`template`) | Labels | Include |
+|---|---|---|---|
+| Cademí MCP: connecting a client, signing in, or a tool call | `mcp_problem.yml` | `mcp`, `bug`, `needs-triage` | client, tool, error `code`, `request_id`, when it happened |
+| A webhook delivery that does not arrive, an unexpected body, a signature that does not verify, retries | `webhook_problem.yml` | `webhooks`, `bug`, `needs-triage` | payload version, `Cademi-Webhook-Id`, delivery or event ID, event, headers and body |
+| An API response that contradicts the docs, also through the CLI or MCP | `api_problem.yml` | `api`, `bug`, `needs-triage` | endpoint, `request_id`, status and `error.code`, `X-Cademi-Release`, request and response |
+| A CLI bug | `bug_report.yml` | `cli`, `bug`, `needs-triage` | command, output with `--debug`, `cademi version`, `cademi env` |
+| Installing or updating the CLI | `install_update.yml` | `cli`, `install`, `needs-triage` | platform, install command, output |
+| Wrong, unclear, or missing documentation at cademi.dev | `documentation.yml` | `documentation`, `needs-triage` | page URL, the text, the suggested change |
+| A new feature | `feature_request.yml` | `enhancement`, `needs-triage` | the product, the task, what you would like |
 
-In `cademi commands --json`, flags shared by many commands are described once under `flag_sets` (`output`, `body`, `async`, `pagination`, `confirm`, `idempotency`); each command lists the sets it accepts plus its own flags.
+Which one when two fit:
 
-## Run without prompts
+- **API or CLI:** confirm with `cademi api <METHOD> <path> --debug` or any HTTP client. A wrong raw response is an API bug; a right response shown or handled wrong is a CLI bug.
+- **API or webhook:** managing a webhook through the API (`POST /webhooks`) is the API. What the endpoint receives is a webhook problem.
+- **API or MCP:** a tool that returns an API error contradicting the API docs is an API bug. Connecting, signing in, or a tool that behaves unexpectedly is an MCP problem.
 
-- Destructive commands ask for confirmation. Pass `--yes` (deletes, `config apply`, `sandbox reset`). Without a terminal and without `--yes`, they exit with code `2`.
-- Request body: `-f name=value` (string), `-F name=true|123|null|<json>` (typed), `-d '<json>'` or `-d @file.json`. Nested keys: `-f content.header=...`; arrays: `-f 'tags[]=a'`.
-- Writes carry an `Idempotency-Key` and are retried automatically on `429`, `500`, `502`, `503`, `504` and network errors. To retry safely across runs, pass the same `--idempotency-key`.
-- `202` responses are operations: add `--wait` to block until they finish.
-- Lists return one page; `--all` follows the cursor.
+## Open an issue
 
-## Read results
+The forms are the contract. Their file names and field IDs are listed in [CHANGELOG.md](CHANGELOG.md).
 
-- Output is JSON when stdout is not a terminal. Force it with `--json`, or filter with `--jq '<expr>'`.
-- With `--json`, `-o json` or `--jq`, errors go to stderr as `{"error":{"code","message","request_id","details"}}`. Branch on `error.code`, never on the message.
-- `cademi env` shows the effective settings and where each value comes from; `cademi doctor` checks connectivity, credentials and version compatibility.
+**Best: a prefilled link for the person to review.** Build `https://github.com/minhacademi/developers/issues/new?template=<file>&title=<title>&<field-id>=<value>`, with every value URL-encoded, and give it to the person to check and submit. The form applies its labels. For a CLI problem, `cademi bug --print` prints this link with the CLI version, platform, and settings already filled in, and `cademi bug --api --print` does the same for an API problem.
 
-## Exit codes
+**With the GitHub CLI**, when the person asked you to submit it: `gh issue create -R minhacademi/developers` with the labels of the form (`--label`), a `--title`, and a `--body` that follows the form, one `### <field label>` heading per field, in the order of the form. Leave a field out only when you do not have it.
 
-| Code | Meaning |
-|---|---|
-| 0 | success |
-| 1 | generic error, failed operation |
-| 2 | invalid usage, or a confirmation needs `--yes` |
-| 3 | authentication: 401, no credential configured, or an expired OAuth session |
-| 4 | permission (403) |
-| 5 | not found (404) |
-| 6 | other 4xx: validation, conflict, precondition |
-| 7 | rate limited (429, after retries) |
-| 8 | server error (5xx, after retries) |
-| 130 | canceled |
+**Title:** what fails and where, in a few words, for example `PATCH /products/{product_id} ignores status` or `lesson_progress.completed body has no lesson_id`.
 
-## Report a problem
+## Open a discussion
 
-This repository takes issues for both the API v3 and the CLI.
+- **Q&A** (how to do something): https://github.com/minhacademi/developers/discussions/new?category=q-a
+- **Ideas** (not concrete enough for a feature request): https://github.com/minhacademi/developers/discussions/new?category=ideas
 
-- **API bug** (a response that contradicts the docs, even through the CLI): confirm with `cademi api <METHOD> <path> --debug`, then `gh issue create -R minhacademi/developers --label api --label bug --title "..." --body "..."` with the endpoint, the `request_id`, the status and `error.code`, what you expected (link the docs page) and the API release (`X-Cademi-Release`).
-- **CLI bug:** `cademi bug --print` prints a prefilled issue URL (CLI version, platform, settings, no secrets) for a person to review and submit. With the GitHub CLI: `gh issue create -R minhacademi/developers --label cli --label bug --title "..." --body "..."`, with the command, its output, `cademi version` and `cademi env`.
-- Write in English. Never include an API key, an access token, a signing secret, or personal data of users. Security vulnerabilities go to the private report (see [SECURITY.md](SECURITY.md)). Questions about an account, plan or its data go to Cademí support.
-- This repository does not accept pull requests; see [CONTRIBUTING.md](CONTRIBUTING.md).
+Give the link to the person. Say what the task is, what was tried, and what happened, and which product it is about.
 
-## Do not
+## Never include
 
-- Run `cademi auth login` in an unattended session: it waits for a browser. Use `CADEMI_API_KEY`.
-- Use a production credential (`ck_live_...`) to experiment. Use a sandbox credential (`ck_test_...`); `cademi sandbox reset --yes` restores the sandbox data.
-- Print or log `CADEMI_API_KEY`. `--debug` logs requests without secrets.
+- API keys (`ck_live_...`, `ck_test_...`), access tokens, OAuth codes, or webhook signing secrets (`whsec_...`).
+- Personal data of real people: names, emails, phone numbers, documents, addresses. Replace it with placeholders. A webhook body sent with the masked or full level of detail, and the result of an MCP tool, can carry personal data.
+- The `Authorization` or `X-API-Key` header of a request.
+
+The `request_id` of an API or MCP error is safe and is the most useful thing to include: it lets Cademí find the call without any other data.
+
+Write in English.

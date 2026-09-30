@@ -6,18 +6,28 @@ body:
       value: |
         Please write in English, so everyone who integrates with Cademí can follow the conversation.
 
-        Check [cademi.dev/cli](https://cademi.dev/cli) first. Found a bug? Run `cademi bug` instead.
+        Check [cademi.dev](https://cademi.dev) first. Found a bug? [Open an issue](https://github.com/minhacademi/developers/issues/new/choose) instead.
 
         **Discussions are public.** Never paste an API key, an access token, a signing secret, or personal data of your users.
   - type: textarea
     id: question
     attributes:
       label: What you want to do
-      description: The task and what you tried, with the commands you ran.
+      description: "The task and what you tried: the requests, commands, or tool calls, and what you got."
     validations:
       required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: About
+      options:
+        - API
+        - Webhooks
+        - MCP
+        - CLI
+        - More than one
   - type: input
     id: version
     attributes:
-      label: CLI version
-      description: Output of `cademi version`.
+      label: CLI version or API release
+      description: Output of `cademi version`, or the `X-Cademi-Release` header.

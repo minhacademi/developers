@@ -1,5 +1,5 @@
 name: Documentation problem
-description: Something in the API or CLI documentation at cademi.dev is wrong, unclear, or missing.
+description: Something in the documentation at cademi.dev (API, webhooks, MCP, or CLI) is wrong, unclear, or missing.
 labels: ["documentation", "needs-triage"]
 body:
   - type: markdown
@@ -18,7 +18,7 @@ body:
     id: problem
     attributes:
       label: What is wrong or missing
-      description: Quote the text if it helps. If the API or the CLI behaves differently from the page, include the request or command and its output.
+      description: Quote the text if it helps. If the API, a webhook, Cademí MCP, or the CLI behaves differently from the page, include what you did and what you got.
     validations:
       required: true
   - type: textarea

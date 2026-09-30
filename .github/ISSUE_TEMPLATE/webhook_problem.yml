@@ -1,0 +1,77 @@
+name: Webhook problem
+description: A Cademí webhook is not delivered, arrives with an unexpected body, or fails verification.
+labels: ["webhooks", "bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please write in English, so everyone who integrates with Cademí can follow the conversation.
+
+        Use this form for webhooks created in the dashboard or through the API: deliveries that do not arrive, a body that does not match the documentation, a signature that does not verify, retries, or automatic deactivation. The guides and the body of each event are at [cademi.dev/webhooks](https://cademi.dev/webhooks).
+
+        **This issue is public.** Never paste a signing secret (`whsec_...`), an API key, or personal data of your users (names, emails, documents). A body sent with the full or masked level of detail carries personal data: remove it or replace it with placeholders.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - A delivery does not arrive
+        - The body does not match the documentation
+        - The signature does not verify
+        - Retries, rate limits, or automatic deactivation
+        - Setting up a webhook
+        - Something else
+    validations:
+      required: true
+  - type: dropdown
+    id: payload-version
+    attributes:
+      label: Payload version
+      options:
+        - "3"
+        - "2"
+        - "1"
+        - not sure
+    validations:
+      required: true
+  - type: input
+    id: webhook-id
+    attributes:
+      label: Webhook ID
+      description: The `Cademi-Webhook-Id` header of a delivery, or the webhook ID in the dashboard or the API.
+      placeholder: whk_42
+  - type: input
+    id: delivery-id
+    attributes:
+      label: Delivery or event ID
+      description: For version 3, the `Cademi-Delivery-Id` header or the `id` of the event. For versions 2 and 1, the `event_id` of the body.
+      placeholder: whd_01J8Z3TESTE
+  - type: input
+    id: event
+    attributes:
+      label: Event
+      description: The event type or name.
+      placeholder: lesson_progress.completed
+  - type: dropdown
+    id: account-environment
+    attributes:
+      label: Account environment
+      options:
+        - sandbox
+        - production
+        - not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected (quote or link the documentation) and what you received, with the status your endpoint answered.
+    validations:
+      required: true
+  - type: textarea
+    id: delivery
+    attributes:
+      label: Headers and body
+      description: The headers and body you received, without the signing secret and without personal data.
+      render: http

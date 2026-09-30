@@ -2,7 +2,7 @@ blank_issues_enabled: false
 contact_links:
   - name: Documentation
     url: https://cademi.dev
-    about: Guides and reference for the API v3 and the CLI.
+    about: Guides and reference for the API v3, webhooks, Cademí MCP, and the CLI.
   - name: Questions and ideas
     url: https://github.com/minhacademi/developers/discussions
     about: Ask how to do something or share an idea.
