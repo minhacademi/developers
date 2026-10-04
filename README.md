@@ -5,8 +5,8 @@ This is the public place to report bugs, request features, and ask questions abo
 ```sh
 curl -fsSL https://cli.cademi.dev/install.sh | bash   # install the CLI (macOS, Linux)
 export CADEMI_API_KEY=ck_test_...                     # authenticate without a browser
-cademi products list --json                           # every API operation is a command
-cademi commands --brief --json                        # list all commands
+cademi content products list --json                   # every API operation is a command
+cademi commands --groups --brief --json               # list the command domains
 cademi bug                                            # report a CLI problem
 ```
 
