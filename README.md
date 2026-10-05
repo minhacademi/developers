@@ -2,19 +2,7 @@
 
 This is the public place to report bugs, request features, and ask questions about the Cademí **[MCP](https://cademi.dev)**, **[CLI](https://cademi.dev/cli)**, **[API](https://cademi.dev/api)** and **[Webhooks](https://cademi.dev/webhooks)**. The documentation lives at **[cademi.dev](https://cademi.dev)**.
 
-Install the CLI on macOS and Linux:
-
-```sh
-curl -fsSL https://cli.cademi.dev/install.sh | bash
-```
-
-On Windows PowerShell:
-
-```powershell
-irm https://cli.cademi.dev/install.ps1 | iex
-```
-
-Then:
+With the CLI [installed](#install-the-cli):
 
 ```sh
 export CADEMI_API_KEY=ck_test_...         # authenticate without a browser
