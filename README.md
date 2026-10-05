@@ -2,12 +2,25 @@
 
 This is the public place to report bugs, request features, and ask questions about the Cademí **[MCP](https://cademi.dev)**, **[CLI](https://cademi.dev/cli)**, **[API](https://cademi.dev/api)** and **[Webhooks](https://cademi.dev/webhooks)**. The documentation lives at **[cademi.dev](https://cademi.dev)**.
 
+Install the CLI on macOS and Linux:
+
 ```sh
-curl -fsSL https://cli.cademi.dev/install.sh | bash   # install the CLI (macOS, Linux)
-export CADEMI_API_KEY=ck_test_...                     # authenticate without a browser
-cademi content products list --json                   # every API operation is a command
-cademi commands --groups --brief --json               # list the command domains
-cademi bug                                            # report a CLI problem
+curl -fsSL https://cli.cademi.dev/install.sh | bash
+```
+
+On Windows PowerShell:
+
+```powershell
+irm https://cli.cademi.dev/install.ps1 | iex
+```
+
+Then:
+
+```sh
+export CADEMI_API_KEY=ck_test_...         # authenticate without a browser
+cademi content products list --json       # every API operation is a command
+cademi commands --groups --brief --json   # list the command domains
+cademi bug                                # report a CLI problem
 ```
 
 **AI agents** opening an issue or a discussion: read [AGENTS.md](AGENTS.md).
