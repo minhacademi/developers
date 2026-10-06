@@ -54,7 +54,7 @@ body:
     attributes:
       label: API release
       description: The `X-Cademi-Release` response header, or `cademi version` if you use the CLI.
-      placeholder: 3.11.0
+      placeholder: 3.12.0
   - type: dropdown
     id: client
     attributes:

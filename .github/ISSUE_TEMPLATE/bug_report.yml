@@ -52,7 +52,7 @@ body:
     attributes:
       label: CLI version
       description: Output of `cademi version`.
-      placeholder: cademi 0.2.3 (api 3.10.1, commit 40c517c)
+      placeholder: cademi 0.2.4 (api 3.10.1, commit 40c517c)
     validations:
       required: true
   - type: input
