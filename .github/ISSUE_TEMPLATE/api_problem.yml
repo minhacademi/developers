@@ -7,7 +7,7 @@ body:
       value: |
         Please write in English, so everyone who integrates with Cademí can follow the conversation.
 
-        Use this form for the public API contract: a documented behavior, status code, error, field, or event that does not match what the API does. The API guides and reference are at [cademi.dev/api](https://cademi.dev/api).
+        Use this form for the public API contract: a documented behavior, status code, error, field, or event that does not match what the API does. The API guides and reference are at [cademi.dev/api](https://cademi.dev/api). A webhook that is not delivered, has an unexpected body, or fails verification goes to the [webhook problem form](https://github.com/minhacademi/developers/issues/new?template=webhook_problem.yml).
 
         **This issue is public.** Never paste an API key (`ck_live_...`, `ck_test_...`), an access token, a webhook signing secret, or personal data of your users (names, emails, documents). Replace IDs of real people with placeholders if needed.
 
@@ -63,7 +63,6 @@ body:
         - cademi CLI
         - Go SDK
         - HTTP client or other SDK
-        - Webhook receiver
   - type: input
     id: docs
     attributes:
