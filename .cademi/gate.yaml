@@ -1,5 +1,3 @@
-# o portao deste repositorio: o que precisa passar antes de push na main e antes de tag.
-# Lido por `bun run cli controls gate <repo>` (core/src/controls). argv, nunca string de shell.
 code: false
 checks:
   - name: editorial check
