@@ -18,12 +18,15 @@ references:
     - file: .github/ISSUE_TEMPLATE/bug_report.yml
       text: "(api {v}, commit"
       role: mention
+      may_lag: true                  # saida da CLI publicada: sobe com o release da CLI, nao com o da API
     - file: .github/ISSUE_TEMPLATE/install_update.yml
       text: "(api {v}, commit"
       role: mention
+      may_lag: true                  # saida da CLI publicada: sobe com o release da CLI, nao com o da API
     - file: .github/ISSUE_TEMPLATE/feature_request.yml
       text: "/ API {v}"
       role: mention
+      may_lag: true                  # saida da CLI publicada: sobe com o release da CLI, nao com o da API
     - file: .github/ISSUE_TEMPLATE/api_problem.yml
       text: "placeholder: {v}"
       role: mention
