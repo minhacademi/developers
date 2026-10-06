@@ -1,0 +1,29 @@
+# repositories/developers/.cademi/versions.yaml
+# Sem package: só os placeholders dos formulários de issue mencionam versões.
+references:
+  cli:
+    - file: .github/ISSUE_TEMPLATE/bug_report.yml
+      text: "cademi {v} (api {api}, commit"
+      role: mention
+      form: no-v
+    - file: .github/ISSUE_TEMPLATE/install_update.yml
+      text: "cademi {v} (api {api}, commit"
+      role: mention
+      form: no-v
+    - file: .github/ISSUE_TEMPLATE/feature_request.yml
+      text: "cademi {v} / API {api}"
+      role: mention
+      form: no-v
+  api:
+    - file: .github/ISSUE_TEMPLATE/bug_report.yml
+      text: "(api {v}, commit"
+      role: mention
+    - file: .github/ISSUE_TEMPLATE/install_update.yml
+      text: "(api {v}, commit"
+      role: mention
+    - file: .github/ISSUE_TEMPLATE/feature_request.yml
+      text: "/ API {v}"
+      role: mention
+    - file: .github/ISSUE_TEMPLATE/api_problem.yml
+      text: "placeholder: {v}"
+      role: mention
