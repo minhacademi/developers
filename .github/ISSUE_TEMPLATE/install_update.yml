@@ -47,7 +47,7 @@ body:
     attributes:
       label: CLI version
       description: Output of `cademi version`, if the CLI is installed.
-      placeholder: cademi 0.2.6 (api 3.12.1, commit 5c203e9)
+      placeholder: cademi 0.2.7 (api 3.12.1, commit 5539c6c)
   - type: textarea
     id: update-check
     attributes:

@@ -34,4 +34,4 @@ body:
     id: version
     attributes:
       label: CLI version or API release
-      placeholder: cademi 0.2.6 / API 3.12.1
+      placeholder: cademi 0.2.7 / API 3.12.1
